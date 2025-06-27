@@ -8,7 +8,7 @@ Docker is used for *containerization* of applications, which are like lightweigh
 
 The purpose of containers is to be able to run applications without having to simulate a *hardware interface* to do so, that is, without needing *another computer* (or abstraction of a computer under a virtual machine).
 
-The *network* in this context is then how to use these *container* under this abstraction, fortunately Docker already has some pretty neat tools like `bridge`, `host`, and `none` networks by default.
+The *network* in this context is then how to use these *containers* under this abstraction. Fortunately, Docker already has some pretty neat networks by default: `bridge`, `host`, and `none`.
 
 When first installing Docker an interface called `docker0` is created (use `netstat -ie` to see it), which is used as the default `bridge` network as mentioned above (see [bridge-network](./bridge-network.md)).
 
