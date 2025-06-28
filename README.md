@@ -24,4 +24,3 @@ curl localhost:8080
 ```
 
 The response should be something like `Hi from :8080 (hostname: da12f89eac4d)`, the number after `hostname:` is the *container id*, which you can see using `docker ps` while the container is still running.
-
