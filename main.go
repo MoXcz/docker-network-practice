@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log/slog"
+	"net"
 	"net/http"
 	"net/http/httputil"
 	"os"
@@ -27,14 +28,16 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	flag.Parse()
-	repDump, err := httputil.DumpRequest(r, true)
+	reqDump, err := httputil.DumpRequest(r, true)
 	if err != nil {
 		return
 	}
 
 	host, _ := os.Hostname()
+	addrs, err := net.LookupHost(host)
 
-	fmt.Println(string(repDump))
-	msg := fmt.Sprintf("Hi from %s (hostname: %s)\n", *listenAddr, host)
+	fmt.Println(string(reqDump))
+
+	msg := fmt.Sprintf("Hi from %s (hostname: %s IP: %s)\n", *listenAddr, host, addrs)
 	w.Write([]byte(msg))
 }
